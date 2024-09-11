@@ -28,7 +28,7 @@ def spawn_processes(num_processes, timeout=5):
 
 def main(timeout=5):
     num_processors = cpu_count()
-    num_processes = num_processors * 10000
+    num_processes = num_processors * 100           # increase this to like 10000000 or something I don't actually know how much it takes to crash a system. Larger number = more processes
     print(f"Number of logical processors: {num_processors}")
     print(f"Creating {num_processes} processes.")
     print("Warning: This will consume system resources. Running with timeout.")
