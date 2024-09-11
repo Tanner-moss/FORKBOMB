@@ -5,3 +5,5 @@ There is an exe file and a .py file.
 If you want to know how it works look at the py file and the comments.
 To run the py file you actually have to use powershell C:/path to python3.11.exe  C:/path to forkbomb.py or whatever you name it.
 But the exe will run on its own.
+
+The ofuscated forbomb is hidden in the .jpg file with stenography and can be extracted with a simple stepic and pillow lib python code.
